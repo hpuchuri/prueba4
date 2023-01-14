@@ -1,0 +1,37 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /v1/vuce-services/sgringesta
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    open-in-view: true
+    hibernate:
+      ddl-auto: none
+  #      ddl-auto: create-drop
+  #      ddl-auto: validate
+  datasource:
+    url: jdbc:oracle:thin:@10.19.34.200:1522:vuceca01
+    username: ingestaapp
+    password: in73s7a229
+    driver-class-name: oracle.jdbc.OracleDriver
+logging:
+  pattern:
+    level: '%5p %mdc'
+  level:
+    pe.gob.mef: INFO
+    org.springframework: DEBUG
+    org.springframework.data: TRACE
+springdoc:
+  api-docs:
+    path: /sgr/api-docs
+    resolve-schema-properties: true
+  swagger-ui:
+    path: /sgr/api-ui.html
+    supportedSubmitMethods: []
+    disable-swagger-default-url: true
+vuce:
+  sgringesta:
+    kafka-bootstrap-server: "10.19.34.189:9092"  #desa
+    #kafka-bootstrap-server: "10.19.34.207:9092"  #certi
+    topic-ingesta-request: "vuce-ingesta-datos-request"
